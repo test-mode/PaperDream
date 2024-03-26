@@ -1,7 +1,9 @@
 {
     "name": "PaperDream",
     "rootNamespace": "PaperDream",
-    "references": [],
+    "references": [
+        "GUID:36e329075625f904da67491c22f4f31d"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
