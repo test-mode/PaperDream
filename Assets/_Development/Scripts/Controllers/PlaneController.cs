@@ -4,15 +4,15 @@ namespace PaperDream
 {
     public class PlaneController : MonoBehaviour
     {
-        [SerializeField] private Transform CameraTarget;
-        [SerializeField] private VariableJoystick joystick;
+        [SerializeField] private Transform _cameraTarget;
+        [SerializeField] private FixedJoystick _joystick;
 
-        [SerializeField, Range(0, 1)] private float CameraSpring = 0.96f;
-        [SerializeField] private float MinThrust = 600f;
-        [SerializeField] private float MaxThrust = 1200f;
-        [SerializeField] private float ThrustIncreaseSpeed = 400f;
-        [SerializeField] private float PitchIncreaseSpeed = 300f;
-        [SerializeField] private float RollIncreaseSpeed = 300f;
+        [SerializeField, Range(0, 1)] private float _cameraSpring = 0.96f;
+        [SerializeField] private float _minThrust = 600f;
+        [SerializeField] private float _maxThrust = 1200f;
+        [SerializeField] private float _thrustIncreaseSpeed = 400f;
+        [SerializeField] private float _pitchIncreaseSpeed = 300f;
+        [SerializeField] private float _rollIncreaseSpeed = 300f;
 
         private Rigidbody _rigidbody;
         private Camera _camera;
@@ -34,41 +34,43 @@ namespace PaperDream
             float thrustDelta = 0f;
             if (Input.GetKey(KeyCode.Space))
             {
-                thrustDelta += ThrustIncreaseSpeed;
+                thrustDelta += _thrustIncreaseSpeed;
             }
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                thrustDelta -= ThrustIncreaseSpeed;
+                thrustDelta -= _thrustIncreaseSpeed;
             }
 
             _currentThrust += thrustDelta * Time.deltaTime;
-            _currentThrust = Mathf.Clamp(_currentThrust, MinThrust, MaxThrust);
+            _currentThrust = Mathf.Clamp(_currentThrust, _minThrust, _maxThrust);
 
             _deltaPitch = 0f;
             if (Input.GetKey(KeyCode.S))
             {
-                _deltaPitch -= PitchIncreaseSpeed;
+                _deltaPitch -= _pitchIncreaseSpeed;
             }
 
             if (Input.GetKey(KeyCode.W))
             {
-                _deltaPitch += PitchIncreaseSpeed;
+                _deltaPitch += _pitchIncreaseSpeed;
             }
 
+            _deltaPitch += _pitchIncreaseSpeed * _joystick.Vertical;
             _deltaPitch *= Time.deltaTime;
 
             _deltaRoll = 0f;
             if (Input.GetKey(KeyCode.A))
             {
-                _deltaRoll += RollIncreaseSpeed;
+                _deltaRoll += _rollIncreaseSpeed;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                _deltaRoll -= RollIncreaseSpeed;
+                _deltaRoll -= _rollIncreaseSpeed;
             }
 
+            _deltaRoll -= _rollIncreaseSpeed * _joystick.Horizontal;
             _deltaRoll *= Time.deltaTime;
         }
 
@@ -83,8 +85,8 @@ namespace PaperDream
             Vector3 cameraTargetPosition = transform.position + (transform.forward * -8f) + new Vector3(0f, 3f, 0f);
             Transform cameraTransform = _camera.transform;
 
-            cameraTransform.position = (cameraTransform.position * CameraSpring) + (cameraTargetPosition * (1 - CameraSpring));
-            _camera.transform.LookAt(CameraTarget);
+            cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
+            _camera.transform.LookAt(_cameraTarget);
         }
     }
 }

@@ -46,14 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6124cbf6e630b43bd360202fe97594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
-  CameraTarget: {fileID: 1156688250313378843}
-  CameraSpring: 0.96
-  MinThrust: 600
-  MaxThrust: 1200
-  ThrustIncreaseSpeed: 400
-  PitchIncreaseSpeed: 300
-  RollIncreaseSpeed: 300
+  _cameraTarget: {fileID: 1156688250313378843}
+  _joystick: {fileID: 0}
+  _cameraSpring: 0.96
+  _minThrust: 600
+  _maxThrust: 1200
+  _thrustIncreaseSpeed: 400
+  _pitchIncreaseSpeed: 300
+  _rollIncreaseSpeed: 300
 --- !u!54 &6381565174094803322
 Rigidbody:
   m_ObjectHideFlags: 0
