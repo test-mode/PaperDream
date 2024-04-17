@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PaperDream
@@ -10,11 +8,9 @@ namespace PaperDream
 
         private void OnTriggerStay(Collider other)
         {
-            var hitObj = other.gameObject;
-            if (hitObj != null)
+            if (other.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
-                var rb = hitObj.GetComponent<Rigidbody>();
-                var dir = transform.up;
+                Vector3 dir = transform.up;
                 rb.AddForce(dir * _windForce);
             }
         }
