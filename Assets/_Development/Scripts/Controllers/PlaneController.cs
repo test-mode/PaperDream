@@ -44,12 +44,6 @@ namespace PaperDream
 
         private void LateUpdate()
         {
-            Vector3 cameraTargetPosition = transform.position + (transform.forward * -8f) + new Vector3(0f, 3f, 0f);
-            Transform cameraTransform = _camera.transform;
-
-            cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
-            _camera.transform.LookAt(_cameraTarget);
-
             Quaternion localRotation = transform.localRotation;
             Vector3 cameraRotation = _camera.transform.rotation.eulerAngles;
             Quaternion targetRotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, localRotation.eulerAngles.z);
@@ -63,6 +57,12 @@ namespace PaperDream
             localRotation *= Quaternion.Euler(_deltaPitch, 0f, 0f);
             transform.localRotation = localRotation;
             _rigidbody.velocity = transform.forward * (_currentThrust * Time.fixedDeltaTime);
+
+            Vector3 cameraTargetPosition = transform.position + (transform.forward * -8f) + new Vector3(0f, 3f, 0f);
+            Transform cameraTransform = _camera.transform;
+
+            cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
+            _camera.transform.LookAt(_cameraTarget);
         }
     }
 }
