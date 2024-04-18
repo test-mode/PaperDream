@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace PaperDream
@@ -21,10 +22,16 @@ namespace PaperDream
         private float _deltaPitch;
         private float _deltaRoll;
 
-        private void Start()
+        private bool _accelerate;
+
+        private async void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _camera = Camera.main;
+            _accelerate = false;
+
+            await Task.Delay(6000);
+            _accelerate = true;
         }
 
         private void Update()
@@ -44,10 +51,13 @@ namespace PaperDream
 
         private void LateUpdate()
         {
-            Quaternion localRotation = transform.localRotation;
-            Vector3 cameraRotation = _camera.transform.rotation.eulerAngles;
-            Quaternion targetRotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, localRotation.eulerAngles.z);
-            _camera.transform.rotation = targetRotation;
+            if (_accelerate)
+            {
+                Quaternion localRotation = transform.localRotation;
+                Vector3 cameraRotation = _camera.transform.rotation.eulerAngles;
+                Quaternion targetRotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, localRotation.eulerAngles.z);
+                _camera.transform.rotation = targetRotation;
+            }
         }
 
         private void FixedUpdate()
@@ -56,13 +66,18 @@ namespace PaperDream
             localRotation *= Quaternion.Euler(0f, 0f, _deltaRoll);
             localRotation *= Quaternion.Euler(_deltaPitch, 0f, 0f);
             transform.localRotation = localRotation;
-            _rigidbody.velocity = transform.forward * (_currentThrust * Time.fixedDeltaTime);
 
-            Vector3 cameraTargetPosition = transform.position + (transform.forward * -8f) + new Vector3(0f, 3f, 0f);
-            Transform cameraTransform = _camera.transform;
+            if (_accelerate)
+            {
+                _rigidbody.useGravity = true;
+                _rigidbody.velocity = transform.forward * (_currentThrust * Time.fixedDeltaTime);
 
-            cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
-            _camera.transform.LookAt(_cameraTarget);
+                Vector3 cameraTargetPosition = transform.position + (transform.forward * -8f) + new Vector3(0f, 3f, 0f);
+                Transform cameraTransform = _camera.transform;
+
+                cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
+                _camera.transform.LookAt(_cameraTarget);
+            }
         }
     }
 }
