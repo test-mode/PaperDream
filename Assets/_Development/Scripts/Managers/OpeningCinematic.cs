@@ -31,6 +31,7 @@ namespace PaperDream
                 yield return null;
             }
             _weatherController.StartRain();
+            EventManager.OnTimerStart();
         }
     }
 }
