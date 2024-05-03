@@ -6,6 +6,7 @@ namespace PaperDream
     {
         [SerializeField] private ParticleSystem[] _particleSystems;
         [SerializeField] private WeatherController _weatherController;
+
         [SerializeField] private float _time;
 
         public Transform target;

@@ -6,17 +6,13 @@ namespace PaperDream
 {
     public class Timer : MonoBehaviour
     {
-        #region Variables
+        [SerializeField] private float _timeToDisplay = 60.0f;
+        [SerializeField] private TimerType _timerType;
+        enum TimerType { Countdown, Stopwatch }
 
         private Text _timerText;
-        enum TimerType { Countdown, Stopwatch }
-        [SerializeField] private TimerType _timerType;
-
-        [SerializeField] private float _timeToDisplay = 60.0f;
 
         private bool _isRunning;
-
-        #endregion
 
         private void Awake() => _timerText = GetComponent<Text>();
 
