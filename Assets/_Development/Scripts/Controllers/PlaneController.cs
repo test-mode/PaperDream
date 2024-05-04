@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PaperDream
 {
-    public class PlaneController : MonoBehaviour
+    public class PlaneController : MonoBehaviour, IDamageable
     {
         [SerializeField] private Transform _cameraTarget;
         [SerializeField] private FixedJoystick _joystick;
@@ -78,6 +78,11 @@ namespace PaperDream
                 cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
                 _camera.transform.LookAt(_cameraTarget);
             }
+        }
+
+        public void TakeDamage(float damage)
+        {
+            Debug.Log($"Plane took {damage} damage!");
         }
     }
 }
