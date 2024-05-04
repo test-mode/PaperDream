@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1156688250313378843}
   - component: {fileID: 7440305546402334296}
   - component: {fileID: 6381565174094803322}
+  - component: {fileID: 7087867195730594671}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -52,8 +53,8 @@ MonoBehaviour:
   _minThrust: 600
   _maxThrust: 1200
   _thrustIncreaseSpeed: 400
-  _pitchIncreaseSpeed: 300
-  _rollIncreaseSpeed: 300
+  _pitchIncreaseSpeed: 100
+  _rollIncreaseSpeed: 100
 --- !u!54 &6381565174094803322
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -81,6 +82,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7087867195730594671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104287763443893274}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 1, z: 3.5}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &4942815368042979528
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +193,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5a1482025803b4d468957add2c54d635,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d4f0a7de1e7a4847a04e23286f38341, type: 2}
     - target: {fileID: 919132149155446097, guid: 5a1482025803b4d468957add2c54d635,
         type: 3}
       propertyPath: m_Name

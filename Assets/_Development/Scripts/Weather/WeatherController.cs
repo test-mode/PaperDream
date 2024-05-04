@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PaperDream
@@ -27,7 +26,7 @@ namespace PaperDream
             }
         }
 
-        private void StartRain()
+        public void StartRain()
         {
             _currentRain = Instantiate(RainPrefab);
             isRaining = true;

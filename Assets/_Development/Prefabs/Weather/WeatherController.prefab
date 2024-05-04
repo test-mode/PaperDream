@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7e8e40a7c9a2b4da07cec70f850a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RainPrefab: {fileID: 11437536, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 3}
+  Sun: {fileID: 0}
+  isRaining: 0
+  hasBeenRaining: 1
