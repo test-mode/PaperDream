@@ -9632,7 +9632,7 @@ GameObject:
   - component: {fileID: 470886}
   - component: {fileID: 11437536}
   m_Layer: 0
-  m_Name: RainPrefab
+  m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

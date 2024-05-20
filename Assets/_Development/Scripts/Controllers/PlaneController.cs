@@ -14,6 +14,7 @@ namespace PaperDream
         [SerializeField] private float _thrustIncreaseSpeed = 400f;
         [SerializeField] private float _pitchIncreaseSpeed = 300f;
         [SerializeField] private float _rollIncreaseSpeed = 300f;
+        [SerializeField] private float _afterBurnerTimer = 3.0f;
 
         private Rigidbody _rigidbody;
         private Camera _camera;
@@ -23,12 +24,24 @@ namespace PaperDream
         private float _deltaRoll;
 
         private bool _accelerate;
+        private bool _afterburner;
+
+        private void OnEnable()
+        {
+            EventManager.AfterBurnerToggle += EventManagerAfterBurnerToggle;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.AfterBurnerToggle -= EventManagerAfterBurnerToggle;
+        }
 
         private async void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _camera = Camera.main;
             _accelerate = false;
+            _afterburner = false;
 
             await Task.Delay(6000);
             _accelerate = true;
@@ -78,6 +91,24 @@ namespace PaperDream
                 cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
                 _camera.transform.LookAt(_cameraTarget);
             }
+        }
+
+        private void EventManagerAfterBurnerToggle(bool toggle)
+        {
+            _afterburner = toggle;
+            _currentThrust = _maxThrust;
+            _cameraSpring = 0.965f;
+            StartCoroutine(ToggleOffAfterCertainTime(_afterBurnerTimer));
+
+        }
+
+        System.Collections.IEnumerator ToggleOffAfterCertainTime(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            _afterburner = false;
+            EventManager.OnAfterBurnerToggle(_afterburner);
+            _currentThrust = _minThrust;
+            _cameraSpring = 0.96f;
         }
 
         public void TakeDamage(float damage)
