@@ -5,20 +5,23 @@ namespace PaperDream
 {
     public class WeatherController : MonoBehaviour
     {
-        public RainScript RainPrefab;
-        public GameObject Sun;
-        public bool isRaining = false;
-        public bool hasBeenRaining = true;
+        [SerializeField] private RainScript RainPrefab;
+        [SerializeField] private CloudBarrier CloudPrefab;
+        [SerializeField] private GameObject Sun;
+
+        [SerializeField] private bool _isRaining = false;
+        [SerializeField] private bool _hasBeenRaining = true;
 
         private RainScript _currentRain;
+        private CloudBarrier _currentCloudBarrier;
 
         private void Start()
         {
             Sun.transform.rotation = Quaternion.Euler(Random.Range(0f, 180f), 0.0f, 0.0f);
 
-            if (hasBeenRaining)
+            if (_hasBeenRaining)
             {
-                StartRain();
+                StartCoroutine(StartRain());
             }
             else
             {
@@ -26,10 +29,28 @@ namespace PaperDream
             }
         }
 
-        public void StartRain()
+        private void Update()
         {
+            if (_currentCloudBarrier == null && CloudPrefab.Altitude > CloudPrefab.MinAltitude)
+            {
+                _currentCloudBarrier = Instantiate(CloudPrefab);
+            }
+        }
+
+        private void LateUpdate()
+        {
+            if (_currentCloudBarrier != null && _currentCloudBarrier.Altitude < CloudPrefab.MinAltitude)
+            {
+                Destroy(_currentCloudBarrier.gameObject);
+            }
+        }
+
+        public IEnumerator StartRain()
+        {
+            float waitTime = 8.0f;
+            yield return StartCoroutine(Countdown(waitTime));
             _currentRain = Instantiate(RainPrefab);
-            isRaining = true;
+            _isRaining = true;
             _currentRain.RainIntensity = Random.Range(0.1f, 1f);
         }
 
@@ -37,7 +58,7 @@ namespace PaperDream
         {
             while (true)
             {
-                if (!hasBeenRaining)
+                if (!_hasBeenRaining)
                 {
                     float waitTime = Random.Range(5f, 60f);
                     yield return StartCoroutine(Countdown(waitTime));
@@ -53,9 +74,9 @@ namespace PaperDream
                     yield return null;
                 }
 
-                isRaining = false;
+                _isRaining = false;
                 Destroy(_currentRain.gameObject);
-                hasBeenRaining = false; // After the first rain, subsequent rains will be random
+                _hasBeenRaining = false;
             }
         }
 
@@ -64,7 +85,7 @@ namespace PaperDream
             float totalTime = duration;
             while (totalTime > 0)
             {
-                Debug.Log("Time remaining: " + totalTime);
+                Debug.Log("Rain toggle... " + totalTime);
                 totalTime -= Time.deltaTime;
                 yield return null;
             }

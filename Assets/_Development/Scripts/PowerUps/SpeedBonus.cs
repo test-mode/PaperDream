@@ -2,15 +2,16 @@ using UnityEngine;
 
 namespace PaperDream
 {
-    public class TimeBonus : MonoBehaviour
+    public class SpeedBonus : MonoBehaviour
     {
-        [SerializeField] private float _secondsToAdd = 0.0f;
+        private bool _afterburner = false;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                EventManager.OnTimerUpdate(_secondsToAdd);
+                _afterburner = true;
+                EventManager.OnAfterBurnerToggle(_afterburner);
                 GameObject.Destroy(gameObject);
             }
         }
