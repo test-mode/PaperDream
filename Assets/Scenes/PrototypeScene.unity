@@ -47648,7 +47648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478d61d224b2b6c4d8831acd1a83610c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToDisplay: 60
+  _timeToDisplay: 10
   _timerType: 0
 --- !u!114 &1917939991
 MonoBehaviour:
@@ -50930,6 +50930,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 1154104531820378885, guid: 636f33e4fdfdd734db4ec6a199662ef1,
+        type: 3}
+      propertyPath: m_Text
+      value: Retry
+      objectReference: {fileID: 0}
     - target: {fileID: 1304992690798501163, guid: 636f33e4fdfdd734db4ec6a199662ef1,
         type: 3}
       propertyPath: m_Color.a
@@ -50984,6 +50989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073447391724642258, guid: 636f33e4fdfdd734db4ec6a199662ef1,
+        type: 3}
+      propertyPath: m_Name
+      value: Retry
       objectReference: {fileID: 0}
     - target: {fileID: 6409819935942093101, guid: 636f33e4fdfdd734db4ec6a199662ef1,
         type: 3}
