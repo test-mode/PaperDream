@@ -43,7 +43,7 @@ namespace PaperDream
             _accelerate = false;
             _afterburner = false;
 
-            await Task.Delay(6000);
+            await Task.Delay(7000);
             _accelerate = true;
         }
 

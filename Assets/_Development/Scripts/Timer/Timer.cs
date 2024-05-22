@@ -40,6 +40,7 @@ namespace PaperDream
             if (_timerType == TimerType.Countdown && _timeToDisplay < 0.0f)
             {
                 EventManager.OnTimerStop();
+                GameManager.Instance.UpdateGameState(GameState.LevelFailed);
                 return;
             }
 
