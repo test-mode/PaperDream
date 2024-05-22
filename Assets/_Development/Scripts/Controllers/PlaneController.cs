@@ -67,9 +67,9 @@ namespace PaperDream
             if (_accelerate)
             {
                 Quaternion localRotation = transform.localRotation;
-                Vector3 cameraRotation = _camera.transform.rotation.eulerAngles;
+                Vector3 cameraRotation = Camera.main.transform.rotation.eulerAngles;
                 Quaternion targetRotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, localRotation.eulerAngles.z);
-                _camera.transform.rotation = targetRotation;
+                Camera.main.transform.rotation = targetRotation;
             }
         }
 
@@ -86,10 +86,10 @@ namespace PaperDream
                 _rigidbody.velocity = transform.forward * (_currentThrust * Time.fixedDeltaTime);
 
                 Vector3 cameraTargetPosition = transform.position + (transform.forward * -8f) + new Vector3(0f, 3f, 0f);
-                Transform cameraTransform = _camera.transform;
+                Transform cameraTransform = Camera.main.transform;
 
                 cameraTransform.position = (cameraTransform.position * _cameraSpring) + (cameraTargetPosition * (1 - _cameraSpring));
-                _camera.transform.LookAt(_cameraTarget);
+                Camera.main.transform.LookAt(_cameraTarget);
             }
         }
 
