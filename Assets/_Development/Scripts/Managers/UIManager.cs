@@ -33,7 +33,7 @@ namespace PaperDream
             _levelSelectionPanel.SetActive(true);
         }
 
-        public void OnPauseButton()
+        public void OnPauseToggleButton()
         {
             TogglePanel(_pausePanel);
         }
@@ -41,6 +41,11 @@ namespace PaperDream
         public void OnRestartButton()
         {
             GameManager.Instance.UpdateGameState(GameState.LevelRestart);
+        }
+
+        public void OnReturnMenu()
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 
         public void OnBackButton()
