@@ -5,7 +5,6 @@ namespace PaperDream
     public class OpeningCinematic : MonoBehaviour
     {
         [SerializeField] private ParticleSystem[] _particleSystems;
-        [SerializeField] private WeatherController _weatherController;
 
         [SerializeField] private float _time;
 
@@ -31,8 +30,7 @@ namespace PaperDream
 
                 yield return null;
             }
-            _weatherController.StartRain();
-            EventManager.OnTimerStart();
+            GameManager.Instance.UpdateGameState(GameState.Gameplay);
         }
     }
 }

@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1cc05f9284f1c3c43b8324471e545ec8
+  - enabled: 1
+    path: Assets/Scenes/PrototypeScene.unity
+    guid: bb48ade01eefea6489eaa775ec9970d9
+  - enabled: 1
+    path: Assets/Scenes/Birds.unity
+    guid: 23d9d4eda071a0942b6b5dc05e0ec235
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 3f8029675fec282459ee922b7e783cc6, type: 2}
