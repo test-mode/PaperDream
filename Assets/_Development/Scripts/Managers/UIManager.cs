@@ -7,6 +7,7 @@ namespace PaperDream
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private GameObject _levelSelectionPanel;
+        [SerializeField] private GameObject _levelFailedPanel;
         [SerializeField] private GameObject _pausePanel;
 
         private Panel panelManager;
@@ -61,7 +62,7 @@ namespace PaperDream
         private void GameManagerOnGameStateChange(GameState state)
         {
             //GameManager.Instance.UpdateGameState(GameState.GameStarted);
-            //_levelSelectionPanel.SetActive(state == GameState.GameStarted);
+            _levelFailedPanel.SetActive(state == GameState.LevelFailed);
         }
 
         private System.Collections.IEnumerator LoadScene()

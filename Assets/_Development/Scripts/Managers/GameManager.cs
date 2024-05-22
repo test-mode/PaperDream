@@ -39,6 +39,7 @@ namespace PaperDream
                     break;
                 case GameState.LevelOpening:
                     HandleLevelOpening();
+                    Time.timeScale = 1;
                     break;
                 case GameState.LevelRestart:
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -49,8 +50,11 @@ namespace PaperDream
                     HandleGameplay();
                     break;
                 case GameState.LevelCleared:
+                    _HUD.SetActive(false);
                     break;
                 case GameState.LevelFailed:
+                    TogglePause();
+                    _HUD.SetActive(false);
                     break;
                 case GameState.GamePaused:
                     TogglePause();

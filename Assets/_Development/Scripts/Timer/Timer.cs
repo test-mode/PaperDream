@@ -31,7 +31,11 @@ namespace PaperDream
         }
 
         private void EventManagerOnTimerStart() => _isRunning = true;
-        private void EventManagerOnTimerStop() => _isRunning = false;
+        private void EventManagerOnTimerStop()
+        {
+            GameManager.Instance.UpdateGameState(GameState.LevelFailed);
+            _isRunning = false;
+        }
         private void EventManagerOnTimerUpdate(float value) => _timeToDisplay += value;
 
         private void Update()
@@ -40,7 +44,6 @@ namespace PaperDream
             if (_timerType == TimerType.Countdown && _timeToDisplay < 0.0f)
             {
                 EventManager.OnTimerStop();
-                GameManager.Instance.UpdateGameState(GameState.LevelFailed);
                 return;
             }
 
