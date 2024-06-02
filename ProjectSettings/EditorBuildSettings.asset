@@ -15,5 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Birds.unity
     guid: 23d9d4eda071a0942b6b5dc05e0ec235
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 92593e2a8ff9a484284640b180c2c618,
+      type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 3f8029675fec282459ee922b7e783cc6, type: 2}
