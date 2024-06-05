@@ -7,7 +7,6 @@ namespace PaperDream
     {
         [SerializeField] private Transform _cameraTarget;
         [SerializeField] private FixedJoystick _joystick;
-
         [SerializeField, Range(0, 1)] private float _cameraSpring = 0.96f;
         [SerializeField] private float _minThrust = 600f;
         [SerializeField] private float _maxThrust = 1200f;
@@ -15,6 +14,7 @@ namespace PaperDream
         [SerializeField] private float _pitchIncreaseSpeed = 300f;
         [SerializeField] private float _rollIncreaseSpeed = 300f;
         [SerializeField] private float _afterBurnerTimer = 3.0f;
+        [SerializeField] private bool _useGyro = true;
 
         private Rigidbody _rigidbody;
         private Camera _camera;
@@ -43,23 +43,42 @@ namespace PaperDream
             _accelerate = false;
             _afterburner = false;
 
+            if (_useGyro)
+            {
+                Input.gyro.enabled = true;
+            }
+
             await Task.Delay(7000);
             _accelerate = true;
         }
 
         private void Update()
         {
+            if (Input.GetMouseButton(0))
+            {
+                _useGyro = false;
+                _joystick.enabled = true;
+            }
+            else
+            {
+                _useGyro = true;
+                _joystick.enabled = false;
+            }
+
             float thrustDelta = 0f;
             _currentThrust += thrustDelta * Time.deltaTime;
             _currentThrust = Mathf.Clamp(_currentThrust, _minThrust, _maxThrust);
 
-            _deltaPitch = 0f;
-            _deltaPitch += _pitchIncreaseSpeed * _joystick.Vertical;
-            _deltaPitch *= Time.deltaTime;
-
-            _deltaRoll = 0f;
-            _deltaRoll -= _rollIncreaseSpeed * _joystick.Horizontal;
-            _deltaRoll *= Time.deltaTime;
+            if (_useGyro)
+            {
+                _deltaPitch = Input.gyro.rotationRateUnbiased.x * _pitchIncreaseSpeed * Time.deltaTime;
+                _deltaRoll = -Input.gyro.rotationRateUnbiased.y * _rollIncreaseSpeed * Time.deltaTime;
+            }
+            else
+            {
+                _deltaPitch = _pitchIncreaseSpeed * _joystick.Vertical * Time.deltaTime;
+                _deltaRoll = -_rollIncreaseSpeed * _joystick.Horizontal * Time.deltaTime;
+            }
         }
 
         private void LateUpdate()
@@ -99,10 +118,9 @@ namespace PaperDream
             _currentThrust = _maxThrust;
             _cameraSpring = 0.965f;
             StartCoroutine(ToggleOffAfterCertainTime(_afterBurnerTimer));
-
         }
 
-        System.Collections.IEnumerator ToggleOffAfterCertainTime(float delay)
+        private System.Collections.IEnumerator ToggleOffAfterCertainTime(float delay)
         {
             yield return new WaitForSeconds(delay);
             _afterburner = false;
