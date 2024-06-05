@@ -13,6 +13,9 @@ namespace PaperDream
 
         public static event UnityAction<bool> CloudBarrierToggle;
 
+        public static event UnityAction ReachedDestination;
+
+
         public static void OnTimerStart() => TimerStart?.Invoke();
         public static void OnTimerStop() => TimerStop?.Invoke();
         public static void OnTimerUpdate(float value) => TimerUpdate?.Invoke(value);
@@ -20,6 +23,7 @@ namespace PaperDream
         public static void OnAfterBurnerToggle(bool value) => AfterBurnerToggle?.Invoke(value);
 
         public static void OnCloudBarrierToggle(bool value) => CloudBarrierToggle?.Invoke(value);
+        public static void OnReachedDestination() => ReachedDestination?.Invoke();
 
     }
 }

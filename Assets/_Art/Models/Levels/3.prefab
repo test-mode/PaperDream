@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3703449048063888672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1678063389465966032}
+  - component: {fileID: 1626582783044580819}
+  - component: {fileID: 1107583149747766095}
+  m_Layer: 0
+  m_Name: 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1678063389465966032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703449048063888672}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: -198.33363, y: 176.0975, z: -789.2701}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1626582783044580819
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703449048063888672}
+  m_Mesh: {fileID: -5582133695706433325, guid: 735031600828e374693b23f408bd993b, type: 3}
+--- !u!23 &1107583149747766095
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703449048063888672}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 39c0fc770e422ff47ae9733ff81d6963, type: 2}
+  - {fileID: 2100000, guid: 37dd4831ac8e8204db8b47c819a6bcc5, type: 2}
+  - {fileID: 2100000, guid: fe9c2860a17872049a6c71331d4d6ab0, type: 2}
+  - {fileID: 2100000, guid: 13d7a68522cc5564bb316d1b77247b6b, type: 2}
+  - {fileID: 2100000, guid: 3537b89eb128b994cbe39a09c2a0534d, type: 2}
+  - {fileID: 2100000, guid: 002049e8200169740a3a2b13597e6a81, type: 2}
+  - {fileID: 2100000, guid: 5a5dfd8608f14fb4cb277e131e190020, type: 2}
+  - {fileID: 2100000, guid: 44fd2b3c34216cb429532f8ca88aff9f, type: 2}
+  - {fileID: 2100000, guid: 0dba0b624a1577e468411f4abdd5b2f2, type: 2}
+  - {fileID: 2100000, guid: 64b29de3c5fdae4498d6a26a8b55d2e7, type: 2}
+  - {fileID: 2100000, guid: 6ee33938b5e0e824d8b45bd15a9f11ff, type: 2}
+  - {fileID: 2100000, guid: 4fbff03e1b325404f923c6273b76aa40, type: 2}
+  - {fileID: 2100000, guid: 3537b89eb128b994cbe39a09c2a0534d, type: 2}
+  - {fileID: 2100000, guid: 13e6d22461049f740a7a511572358cfc, type: 2}
+  - {fileID: 2100000, guid: 64b29de3c5fdae4498d6a26a8b55d2e7, type: 2}
+  - {fileID: 2100000, guid: 1cf5ed5345aeb2247b5fe439fa307511, type: 2}
+  - {fileID: 2100000, guid: d849330a79364054b923aa25da684ebf, type: 2}
+  - {fileID: 2100000, guid: ad2ece3dcefbb074fac7f78a9d6cfbdb, type: 2}
+  - {fileID: 2100000, guid: ad2ece3dcefbb074fac7f78a9d6cfbdb, type: 2}
+  - {fileID: 2100000, guid: 60186fd46e172ed40851a86da3cc1c8a, type: 2}
+  - {fileID: 2100000, guid: 63c0a88a6129ea04ea46d07fdbc2c90c, type: 2}
+  - {fileID: 2100000, guid: 13e6d22461049f740a7a511572358cfc, type: 2}
+  - {fileID: 2100000, guid: cb44e009cb9464c4f906cb1a4d8b11d6, type: 2}
+  - {fileID: 2100000, guid: 5a5dfd8608f14fb4cb277e131e190020, type: 2}
+  - {fileID: 2100000, guid: 60186fd46e172ed40851a86da3cc1c8a, type: 2}
+  - {fileID: 2100000, guid: 4fbff03e1b325404f923c6273b76aa40, type: 2}
+  - {fileID: 2100000, guid: 09706306d4977ab4f8918d521ec4eb08, type: 2}
+  - {fileID: 2100000, guid: 39c0fc770e422ff47ae9733ff81d6963, type: 2}
+  - {fileID: 2100000, guid: dadb9816990801a4c84cba31171f2408, type: 2}
+  - {fileID: 2100000, guid: d849330a79364054b923aa25da684ebf, type: 2}
+  - {fileID: 2100000, guid: 1cf5ed5345aeb2247b5fe439fa307511, type: 2}
+  - {fileID: 2100000, guid: 5b28a88372281074e94e53303125b02c, type: 2}
+  - {fileID: 2100000, guid: d3a2ed07f463fdc4dabee8679db1a843, type: 2}
+  - {fileID: 2100000, guid: 7c9cebacdd2e96f4d8e3b9dc16c8b2f2, type: 2}
+  - {fileID: 2100000, guid: b80d5c0d08bd46d49be256f66e07d3a9, type: 2}
+  - {fileID: 2100000, guid: 13d7a68522cc5564bb316d1b77247b6b, type: 2}
+  - {fileID: 2100000, guid: 8b215b5dc583a6b4795e7d684234fe72, type: 2}
+  - {fileID: 2100000, guid: 43f7fd2ca194d0b47b76accd58cc7bea, type: 2}
+  - {fileID: 2100000, guid: b80d5c0d08bd46d49be256f66e07d3a9, type: 2}
+  - {fileID: 2100000, guid: d3a2ed07f463fdc4dabee8679db1a843, type: 2}
+  - {fileID: 2100000, guid: 7c9cebacdd2e96f4d8e3b9dc16c8b2f2, type: 2}
+  - {fileID: 2100000, guid: 63c0a88a6129ea04ea46d07fdbc2c90c, type: 2}
+  - {fileID: 2100000, guid: e3078d5e23bf58a40951c3d879084274, type: 2}
+  - {fileID: 2100000, guid: 43f7fd2ca194d0b47b76accd58cc7bea, type: 2}
+  - {fileID: 2100000, guid: 4b337c3e2486cea419065bcefc31bb85, type: 2}
+  - {fileID: 2100000, guid: 13e6d22461049f740a7a511572358cfc, type: 2}
+  - {fileID: 2100000, guid: 91a1881b00a4abf48b147c56b055a6e4, type: 2}
+  - {fileID: 2100000, guid: 3f197f6765d76ae44ac708f677d8f873, type: 2}
+  - {fileID: 2100000, guid: dadb9816990801a4c84cba31171f2408, type: 2}
+  - {fileID: 2100000, guid: 82ce6c865997a374eb8e729693fc72c9, type: 2}
+  - {fileID: 2100000, guid: 3dab219210aa12745990bfc87955f1de, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
