@@ -14,7 +14,7 @@ namespace PaperDream
         [SerializeField] private float _pitchIncreaseSpeed = 300f;
         [SerializeField] private float _rollIncreaseSpeed = 300f;
         [SerializeField] private float _afterBurnerTimer = 3.0f;
-        [SerializeField] private bool _useGyro = true;
+        [SerializeField] private bool _useGyro = false;
 
         private Rigidbody _rigidbody;
         private Camera _camera;
@@ -36,6 +36,19 @@ namespace PaperDream
             EventManager.AfterBurnerToggle -= EventManagerAfterBurnerToggle;
         }
 
+        public void ToggleGyro()
+        {
+            _useGyro = !_useGyro;
+            _joystick.gameObject.SetActive(!_useGyro);
+
+            print(_useGyro);
+        }
+
+        public void OnReachedDestination()
+        {
+            _accelerate = false;
+        }
+
         private async void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -54,17 +67,6 @@ namespace PaperDream
 
         private void Update()
         {
-            if (Input.GetMouseButton(0))
-            {
-                _useGyro = false;
-                _joystick.enabled = true;
-            }
-            else
-            {
-                _useGyro = true;
-                _joystick.enabled = false;
-            }
-
             float thrustDelta = 0f;
             _currentThrust += thrustDelta * Time.deltaTime;
             _currentThrust = Mathf.Clamp(_currentThrust, _minThrust, _maxThrust);

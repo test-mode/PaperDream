@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,23 +10,34 @@ namespace PaperDream
         [SerializeField] private GameObject _levelSelectionPanel;
         [SerializeField] private GameObject _levelFailedPanel;
         [SerializeField] private GameObject _pausePanel;
+        [SerializeField] private GameObject _playPanel;
+        [SerializeField] private GameObject _winPanel;
 
         private Panel panelManager;
 
         private void Awake()
         {
             GameManager.OnGameStateChanged += GameManagerOnGameStateChange;
+            EventManager.ReachedDestination += OnReachedDestination;
             panelManager = new Panel();
         }
 
         private void OnDestroy()
         {
             GameManager.OnGameStateChanged -= GameManagerOnGameStateChange;
+            EventManager.ReachedDestination -= OnReachedDestination;
         }
 
-        void Start()
+        private async void OnReachedDestination()
         {
-        
+            await Task.Delay(2000);
+            _playPanel.SetActive(false);
+            _winPanel.SetActive(true);
+        }
+
+        private void Start()
+        {
+
         }
 
         public void OnPlayButton()
@@ -61,7 +73,8 @@ namespace PaperDream
         public void OnSelectLevelButton(int index)
         {
             //GameManager.Instance.UpdateGameState(GameState.LevelOpening);
-            StartCoroutine(LoadScene());
+            //StartCoroutine(LoadScene(index));
+            SceneManager.LoadScene(index, LoadSceneMode.Single);
         }
 
         private void GameManagerOnGameStateChange(GameState state)
@@ -70,11 +83,11 @@ namespace PaperDream
             _levelFailedPanel.SetActive(state == GameState.LevelFailed);
         }
 
-        private System.Collections.IEnumerator LoadScene()
+        private System.Collections.IEnumerator LoadScene(int index = 0)
         {
             Scene currentScene = SceneManager.GetActiveScene();
 
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
 
             while (!asyncLoad.isDone)
             {
@@ -99,7 +112,7 @@ namespace PaperDream
 
     public class Panel
     {
-        private HashSet<GameObject> activePanels = new HashSet<GameObject>();
+        private readonly HashSet<GameObject> activePanels = new();
 
         public void RegisterPanel(GameObject panel)
         {

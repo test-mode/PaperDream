@@ -4,13 +4,11 @@ using UnityEngine.SceneManagement;
 
 namespace PaperDream
 {
-
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameObject _HUD;
         [SerializeField] private WeatherController _weatherController;
-
-        float previousTimeScale = 1;
+        private float previousTimeScale = 1;
         public static bool isPaused = false;
 
         public static GameManager Instance;
@@ -21,10 +19,18 @@ namespace PaperDream
 
         private void Awake()
         {
-            Instance = this;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                Instance = this;
+            }
         }
 
-        void Start()
+        private void Start()
         {
             UpdateGameState(GameState.LevelOpening);
         }
